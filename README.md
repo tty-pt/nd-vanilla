@@ -72,6 +72,24 @@ either way.
   `nd_evt_birth`/`nd_evt_death` wrapper to call. So there is no firing site to
   find and re-wire — the event has to be created.
 
+## In-Game Commands (`man-src/`)
+
+None directly. Governs player genesis and spawn placement.
+
+## Packaged Assets (`art/`)
+
+Baseline entity and item skeletons.
+
+## Wire Protocol & BCP Integration
+
+Teleports newly authenticated players to room reference 0, initiating the first `BCP_ROOM` and `BCP_VIEW` frames sent to the client.
+
+## Modder Extension Guide
+
+To alter where new players begin their journey or provide starter items:
+1. Adjust `on_new_player()` to teleport players to a custom starting sanctuary room.
+2. Grant starter equipment or gold through the `HD_OBJ` API before dispatching.
+
 ## Testing
 
 There is no `test.sh` here. Behaviour is asserted by the engine's own suite,
